@@ -10,6 +10,4 @@ const router = [{
 	action: loginInfo.phonePasswordLogin
 }]
 
-module.exports = {
-	router
-}
+module.exports = router

@@ -2,13 +2,14 @@ const parseResult = require('../libs/parseResult.js')
 const loginRouter = require('./loginRouter.js')
 
 const routerList = []
-jionRouterList(loginRouter)
 
 function jionRouterList(router) {
 	for (let i = 0; i < router.length; i++) {
 		routerList.push(router[i])
 	}
 }
+
+jionRouterList(loginRouter)
 
 function interfaceAction(pathname, param, callback) {
 	for (let i = 0; i < routerList.length; i ++) {
