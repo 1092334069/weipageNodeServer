@@ -18,5 +18,5 @@ function modelToArray(model, keys) {
 }
 
 module.exports = {
-	modelToArray: modelToArray
+	modelToArray
 }
