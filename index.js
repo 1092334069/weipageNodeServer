@@ -11,8 +11,8 @@ const app = express()
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
-var server = app.listen(8090, function () {
-	console.log('listen 8090')
+var server = app.listen(9090, function () {
+	console.log('listen 9090')
 })
 
 function requestAction(req, res) {
