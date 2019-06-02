@@ -105,7 +105,7 @@ function insertToken(param, callback) {
 *		uid 	用户id
 *	}
 */
-resetToken(param, callback) {
+function resetToken(param, callback) {
 	if (!param) {
 		callback(resultUtil.missParam('缺少参数'))
 		return
