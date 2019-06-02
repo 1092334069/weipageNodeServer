@@ -1,7 +1,7 @@
-const UserInfoServie = require('../service/userInfoServie.js')
-const UserInfoModel = require('../model/UserInfoModel.js')
+const UserInfoServie = require('../service/userInfoServie')
+const UserInfoModel = require('../model/UserInfoModel')
 
-const resultUtil = require('../libs/resultUtil.js')
+const resultUtil = require('../libs/resultUtil')
 
 class UserInfo {
 	/*

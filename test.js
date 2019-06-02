@@ -1,4 +1,4 @@
-const LoginInfo = require('./interface/loginInfo.js')
+const LoginInfo = require('./interface/loginInfo')
 
 const loginInfo = new LoginInfo()
 

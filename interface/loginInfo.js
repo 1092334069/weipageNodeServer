@@ -1,6 +1,6 @@
 const LoginInfoService = require('../service/loginInfoService')
 const LoginInfoModel = require('../model/loginInfoModel')
-const PhoneCodeService = require('../service/phoneCodeService.js')
+const PhoneCodeService = require('../service/phoneCodeService')
 const PhoneCodeModel = require('../model/phoneCodeModel.js')
 const PhonePasswordService = require('../service/phonePasswordService')
 const PhonePasswordModel = require('../model/phonePasswordModel')

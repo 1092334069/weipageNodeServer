@@ -1,5 +1,5 @@
-const resultUtil = require('../libs/resultUtil.js')
-const loginRouter = require('./loginRouter.js')
+const resultUtil = require('../libs/resultUtil')
+const loginRouter = require('./loginRouter')
 
 const routerList = []
 

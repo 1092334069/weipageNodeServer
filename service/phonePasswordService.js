@@ -1,5 +1,5 @@
-const sqlConnect = require('../datebase/sqlConnect.js')
-const modelUtil = require('../libs/modelUtil.js')
+const sqlConnect = require('../datebase/sqlConnect')
+const modelUtil = require('../libs/modelUtil')
 
 class PhonePasswordService {
 	constructor() {

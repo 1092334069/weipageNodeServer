@@ -4,7 +4,7 @@ const bodyParser = require("body-parser")
 const querystring = require('querystring')
 const multiparty = require('multiparty')
 
-const parseHttp = require('./libs/parseHttp.js')
+const parseHttp = require('./libs/parseHttp')
 
 
 const app = express()

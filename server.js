@@ -4,8 +4,8 @@ const bodyParser = require("body-parser")
 const querystring = require('querystring')
 const multiparty = require('multiparty')
 
-const httpUtil = require('./libs/httpUtil.js')
-const interfaceRouter = require('./interfaceRouter/index.js')
+const httpUtil = require('./libs/httpUtil')
+const interfaceRouter = require('./interfaceRouter/index')
 
 const app = express()
 
