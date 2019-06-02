@@ -1,7 +1,8 @@
-class PhoneCodeModel {
-	constructor() {
+class LoginInfoModel {
+	constructor() {	
 		this.phone = ''
-		this.code = ''
+		this.uid = 0
+		this.token = ''
 		this.updateTime = new Date()
 	}
 	getPhone() {
@@ -10,11 +11,17 @@ class PhoneCodeModel {
 	setPhone(phone) {
 		this.phone = phone
 	}
-	getCode() {
-		return this.code
+	getUid() {
+		return this.uid
 	}
-	setCode(code) {
-		this.code = code
+	setUid(uid) {
+		this.uid = parseInt(uid)
+	}
+	getToken() {
+		return this.token
+	}
+	setToken(token) {
+		this.token = token
 	}
 	getUpdateTime() {
 		return this.updateTime
@@ -24,4 +31,4 @@ class PhoneCodeModel {
 	}
 }
 
-module.exports = PhoneCodeModel
+module.exports = LoginInfoModel

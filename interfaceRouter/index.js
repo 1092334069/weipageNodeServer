@@ -1,4 +1,4 @@
-const parseResult = require('../libs/parseResult.js')
+const resultUtil = require('../libs/resultUtil.js')
 const loginRouter = require('./loginRouter.js')
 
 const routerList = []
@@ -18,7 +18,7 @@ function interfaceAction(pathname, param, callback) {
 			return
 		}
 	}
-	callback(parseResult.searchEmpty('没有查找到接口' + pathname))
+	callback(resultUtil.searchEmpty('没有查找到接口' + pathname))
 }
 
 module.exports = {

@@ -5,7 +5,7 @@ function success(res) {
 	}
 }
 
-function dataError(res) {
+function conditionError(res) {
 	return {
 		code: 300,
 		message: res
@@ -35,7 +35,7 @@ function missParam(res) {
 
 module.exports = {
 	success,
-	dataError,
+	conditionError,
 	searchEmpty,
 	sqlException,
 	missParam
