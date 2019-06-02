@@ -1,7 +1,8 @@
-function success(res) {
+function success(res, message) {
 	return {
 		code: 200,
-		data: res
+		data: res,
+		message: message
 	}
 }
 
