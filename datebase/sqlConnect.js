@@ -11,6 +11,7 @@ function mysqlConnect(sqlStr, sqlParam, callback, errorCallback) {
 		}
 		client.query(sqlStr, param, function(error, results) {
 			if (error) {
+				console.log(error)
 				if (errorCallback) {
 					errorCallback(error)
 				}
