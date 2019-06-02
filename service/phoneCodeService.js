@@ -12,7 +12,7 @@ class PhoneCodeService {
 		sqlConnect.connect(sql, param, callback, errorCallback)
 	}
 	update(model, callback, errorCallback) {
-		const sql = `update into ${this.tableName} set code = ?,updateTime = ? where phone = ?`
+		const sql = `update ${this.tableName} set code = ?,updateTime = ? where phone = ?`
 		const param = modelUtil.modelToArray(model, 'code,updateTime,phone')
 		sqlConnect.connect(sql, param, callback, errorCallback)
 	}

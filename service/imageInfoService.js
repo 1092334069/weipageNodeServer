@@ -11,7 +11,7 @@ class ImageInfoService {
 		sqlConnect.connect(sql, param, callback, errorCallback)
 	}
 	update(model, callback, errorCallback) {
-		const sql = `update into ${this.tableName} set url = ?,size = ?,userId = ? where id = ?`
+		const sql = `update ${this.tableName} set url = ?,size = ?,userId = ? where id = ?`
 		const param = modelUtil.modelToArray(model, 'url,size,userId,id')
 		sqlConnect.connect(sql, param, callback, errorCallback)
 	}

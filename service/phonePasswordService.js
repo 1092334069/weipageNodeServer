@@ -11,7 +11,7 @@ class PhonePasswordService {
 		sqlConnect.connect(sql, param, callback, errorCallback)
 	}
 	update(model, callback, errorCallback) {
-		const sql = `update into ${this.tableName} set password = ?,updateTime = ? where phone = ?`
+		const sql = `update ${this.tableName} set password = ?,updateTime = ? where phone = ?`
 		const param = modelUtil.modelToArray(model, 'password,updateTime,phone')
 		sqlConnect.connect(sql, param, callback, errorCallback)
 	}

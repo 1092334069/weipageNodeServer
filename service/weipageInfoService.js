@@ -11,7 +11,7 @@ class WeipageInfoService {
 		sqlConnect.connect(sql, param, callback, errorCallback)
 	}
 	update(model, callback, errorCallback) {
-		const sql = `update into ${this.tableName} set name = ?,describe = ?,cover = ?,pageName = ?,data = ?,userId = ? where id = ?`
+		const sql = `update ${this.tableName} set name = ?,describe = ?,cover = ?,pageName = ?,data = ?,userId = ? where id = ?`
 		const param = modelUtil.modelToArray(model, 'name,describe,cover,pageName,data,userId,id')
 		sqlConnect.connect(sql, param, callback, errorCallback)
 	}

@@ -11,7 +11,7 @@ class UserInfoService {
 		sqlConnect.connect(sql, param, callback, errorCallback)
 	}
 	update(model, callback, errorCallback) {
-		const sql = `update into ${this.tableName} set name = ?,phone = ?,grade = ?,isVip = ?,status = ?,remark = ? where id = ?`
+		const sql = `update ${this.tableName} set name = ?,phone = ?,grade = ?,isVip = ?,status = ?,remark = ? where id = ?`
 		const param = modelUtil.modelToArray(model, 'name,phone,grade,isVip,status,remark,id')
 		sqlConnect.connect(sql, param, callback, errorCallback)
 	}

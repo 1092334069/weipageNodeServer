@@ -11,7 +11,7 @@ class InterfaceInfoService {
 		sqlConnect.connect(sql, param, callback, errorCallback)
 	}
 	update(model, callback, errorCallback) {
-		const sql = `update into ${this.tableName} set name = ?,type = ?,url = ?,param = ?,dataType = ?,callbackParam = ?,userId = ? where id = ?`
+		const sql = `update ${this.tableName} set name = ?,type = ?,url = ?,param = ?,dataType = ?,callbackParam = ?,userId = ? where id = ?`
 		const param = modelUtil.modelToArray(model, 'name,type,url,param,dataType,callbackParam,userId')
 		sqlConnect.connect(sql, param, callback, errorCallback)
 	}
