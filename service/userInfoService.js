@@ -26,7 +26,7 @@ class UserInfoService {
 		sqlConnect.connect(sql, param, function(res) {
 			serviceUtil.selectOneCallback(res, callback)
 		}, errorCallback)
-	},
+	}
 	selectByPhone(model, callback, errorCallback) {
 		const sql = `select * from ${this.tableName} where phone = ?`
 		const param = modelUtil.modelToArray(model, 'phone')
