@@ -9,7 +9,7 @@ class UserInfoService {
 		const sql = `insert into ${this.tableName}(id,name,phone,grade,isVip,status,remark,createTime) values(0,?,?,?,?,?,?,?)`
 		const param = modelUtil.modelToArray(model, 'name,phone,grade,isVip,status,remark,createTime')
 		sqlConnect.connect(sql, param, function(res) {
-			callback({id: res.OkPacket.insertId})
+			callback({id: res.insertId})
 		}, errorCallback)
 	}
 	update(model, callback, errorCallback) {
