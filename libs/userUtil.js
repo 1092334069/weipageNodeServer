@@ -4,6 +4,7 @@ const UserInfoService = require('../service/userInfoService')
 const UserInfoModel = require('../model/userInfoModel')
 
 const resultUtil = require('./resultUtil')
+const operationUtil = require('./operationUtil')
 /*
 *	校验登录
 *	param {
