@@ -7,7 +7,7 @@ class UserInfoService {
 	}
 	insert(model, callback, errorCallback) {
 		const sql = `insert into ${this.tableName}(id,name,phone,grade,isVip,status,remark,createTime) values(0,?,?,?,?,?,?,?)`
-		const param = modelUtil.modelToArray(model, 'id,name,phone,grade,isVip,status,remark,createTime')
+		const param = modelUtil.modelToArray(model, 'name,phone,grade,isVip,status,remark,createTime')
 		console.log(param)
 		sqlConnect.connect(sql, param, callback, errorCallback)
 	}
