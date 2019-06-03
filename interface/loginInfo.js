@@ -39,7 +39,7 @@ class LoginInfo {
 			if (res && res.code === param.code) {
 				userUtil.getLoginTokenByPhone({
 					phone: param.phone
-				}, callback)
+				}, callback, callback)
 			} else {
 				callback(resultUtil.conditionError('验证码错误'))
 			}
@@ -76,7 +76,7 @@ class LoginInfo {
 			if (res && res.password === param.password) {
 				userUtil.getLoginTokenByPhone({
 					phone: param.phone
-				}, callback)
+				}, callback, callback)
 			} else {
 				callback(resultUtil.conditionError('密码错误'))
 			}

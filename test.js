@@ -1,10 +1,9 @@
-const LoginInfo = require('./interface/loginInfo')
+const userUtil = require('./libs/userUtil')
 
-const loginInfo = new LoginInfo()
-
-loginInfo.phoneCodeLogin({
-	phone: '13651438085',
-	code: '1234'
+userUtil.register({
+	phone: '18300000000'
+}, function(res) {
+	console.log(res)
 }, function(res) {
 	console.log(res)
 })

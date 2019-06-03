@@ -1,5 +1,7 @@
 const LoginInfoService = require('../service/loginInfoService')
 const LoginInfoModel = require('../model/loginInfoModel')
+const UserInfoService = require('../service/userInfoService')
+const UserInfoModel = require('../model/userInfoModel')
 
 const resultUtil = require('./resultUtil')
 /*
@@ -43,9 +45,9 @@ function checkLogin(param, callback, errorCallback) {
 *		phone 	手机号码
 *	}
 */
-function getLoginTokenByPhone(param, callback) {
+function getLoginTokenByPhone(param, callback, errorCallback) {
 	if (!param || !param.phone) {
-		callback(resultUtil.missParam('缺少手机号码'))
+		errorCallback(resultUtil.missParam('缺少手机号码'))
 		return
 	}
 
@@ -59,7 +61,29 @@ function getLoginTokenByPhone(param, callback) {
 			token: res.token
 		}, '登录成功'))
 	}, function() {
-		callback(resultUtil.sqlException())
+		errorCallback(resultUtil.sqlException())
+	})
+}
+
+/*
+*	用户注册
+*	param {
+*		phone 	手机号码
+*	}
+*/
+function register(param, callback, errorCallback) {
+	if (!param && !param.phone) {
+		errorCallback(resultUtil.missParam('缺少手机号码'))
+		return
+	}
+
+	const userInfoService = new UserInfoService()
+	const userInfoModel = new UserInfoModel()
+	userInfoModel.setPhone(param.phone)
+	userInfoService.insert(userInfoModel, function(res) {
+		callback(resultUtil.success(res, '登录成功'))
+	}, function() {
+		errorCallback(resultUtil.sqlException())
 	})
 }
 
@@ -70,17 +94,17 @@ function getLoginTokenByPhone(param, callback) {
 *		uid 	用户id
 *	}
 */
-function insertToken(param, callback) {
+function insertToken(param, callback, errorCallback) {
 	if (!param) {
-		callback(resultUtil.missParam('缺少参数'))
+		errorCallback(resultUtil.missParam('缺少参数'))
 		return
 	}
 	if (!param.uid) {
-		callback(resultUtil.missParam('缺少uid'))
+		errorCallback(resultUtil.missParam('缺少uid'))
 		return
 	}
 	if (!param.phone) {
-		callback(resultUtil.missParam('缺少手机号码'))
+		errorCallback(resultUtil.missParam('缺少手机号码'))
 		return
 	}
 
@@ -94,7 +118,7 @@ function insertToken(param, callback) {
 	loginInfoService.insert(loginInfoModel, function(res) {
 		callback(resultUtil.success(res, '新增token成功'))
 	}, function() {
-		callback(resultUtil.sqlException())
+		errorCallback(resultUtil.sqlException())
 	})
 }
 
@@ -105,9 +129,9 @@ function insertToken(param, callback) {
 *		uid 	用户id
 *	}
 */
-function resetToken(param, callback) {
+function resetToken(param, callback, errorCallback) {
 	if (!param) {
-		callback(resultUtil.missParam('缺少参数'))
+		errorCallback(resultUtil.missParam('缺少参数'))
 		return
 	}
 
@@ -121,23 +145,24 @@ function resetToken(param, callback) {
 		loginInfoService.updateTokenByUid(loginInfoModel, function(res) {
 			callback(resultUtil.success(res))
 		}, function(res) {
-			callback(resultUtil.sqlException())
+			errorCallback(resultUtil.sqlException())
 		})
 	} else if (param.phone) {
 		loginInfoModel.setPhone(param.phone)
 		loginInfoService.updateTokenByPhone(loginInfoModel, function(res) {
 			callback(resultUtil.success(res, '重设token成功'))
 		}, function(res) {
-			callback(resultUtil.sqlException())
+			errorCallback(resultUtil.sqlException())
 		})
 	} else {
-		callback(resultUtil.missParam('缺少uid或手机号码'))
+		errorCallback(resultUtil.missParam('缺少uid或手机号码'))
 	}
 }
 
 module.exports = {
 	checkLogin,
 	getLoginTokenByPhone,
+	register,
 	insertToken,
 	resetToken
 }
