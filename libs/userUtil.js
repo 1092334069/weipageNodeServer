@@ -81,7 +81,11 @@ function register(param, callback, errorCallback) {
 	const userInfoModel = new UserInfoModel()
 	userInfoModel.setPhone(param.phone)
 	userInfoService.insert(userInfoModel, function(res) {
-		callback(resultUtil.success(res, '登录成功'))
+		console.log(res)
+		insertToken({
+			phone: param.phone,
+			uid: res.id
+		}, callback, errorCallback)
 	}, function() {
 		errorCallback(resultUtil.sqlException())
 	})
@@ -116,7 +120,7 @@ function insertToken(param, callback, errorCallback) {
 	loginInfoModel.setUpdateTime(new Date())
 
 	loginInfoService.insert(loginInfoModel, function(res) {
-		callback(resultUtil.success(res, '新增token成功'))
+		callback(resultUtil.success(res, '登录成功'))
 	}, function() {
 		errorCallback(resultUtil.sqlException())
 	})

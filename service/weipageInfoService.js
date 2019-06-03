@@ -7,8 +7,10 @@ class WeipageInfoService {
 	}
 	insert(model, callback, errorCallback) {
 		const sql = `insert into ${this.tableName}(id,name,describe,cover,pageName,data,userId,createTime) values(0,?,?,?,?,?,?,?)`
-		const param = modelUtil.modelToArray(model, 'id,name,describe,cover,pageName,data,userId,createTime')
-		sqlConnect.connect(sql, param, callback, errorCallback)
+		const param = modelUtil.modelToArray(model, 'name,describe,cover,pageName,data,userId,createTime')
+		sqlConnect.connect(sql, param, function(res) {
+			callback({id: res.OkPacket.insertId})
+		}, errorCallback)
 	}
 	update(model, callback, errorCallback) {
 		const sql = `update ${this.tableName} set name = ?,describe = ?,cover = ?,pageName = ?,data = ?,userId = ? where id = ?`
