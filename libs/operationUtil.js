@@ -4,6 +4,11 @@ function getToken() {
 	return time.toString() + random.toString()
 }
 
+function getPhoneCode() {
+	return Math.floor(Math.random() * 1000000)
+}
+
 module.exports = {
-	getToken
+	getToken,
+	getPhoneCode
 }

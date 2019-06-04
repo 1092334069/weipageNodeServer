@@ -1,9 +1,6 @@
-const userUtil = require('./libs/userUtil')
+const LoginInfo = require('./interface/loginInfo')
+const loginInfo = new LoginInfo()
 
-userUtil.register({
-	phone: '18300000003'
-}, function(res) {
-	console.log(res)
-}, function(res) {
+loginInfo.sendPhoneCode({phone: '18300000000'}, function(res) {
 	console.log(res)
 })

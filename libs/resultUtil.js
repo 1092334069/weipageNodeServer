@@ -34,10 +34,18 @@ function missParam(res) {
 	}
 }
 
+function unLogin(res) {
+	return {
+		code: 700,
+		message: res
+	}
+}
+
 module.exports = {
 	success,
 	conditionError,
 	searchEmpty,
 	sqlException,
-	missParam
+	missParam,
+	unLogin
 }

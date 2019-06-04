@@ -36,6 +36,17 @@ class UserInfoService {
 			serviceUtil.selectOneCallback(res, callback)
 		}, errorCallback)
 	}
+	checkIsRegister(model, callback, errorCallback) {
+		const sql = `select id from ${this.tableName} where phone = ?`
+		const param = modelUtil.modelToArray(model, 'phone')
+		sqlConnect.connect(sql, param, function(res) {
+			if (res && Array.isArray(res) && res.length) {
+				callback(true)
+			} else {
+				callback(false)
+			}
+		}, errorCallback)
+	}
 }
 
 module.exports = UserInfoService
