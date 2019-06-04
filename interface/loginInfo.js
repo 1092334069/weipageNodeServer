@@ -197,7 +197,7 @@ class LoginInfo {
 
 		phoneCodeService.select(phoneCodeModel, function(res) {
 			if (res && res.code === param.code) {
-				getLoginToken({param, callback, callback)
+				getLoginToken(param, callback, callback)
 			} else {
 				callback(resultUtil.conditionError('验证码错误'))
 			}
