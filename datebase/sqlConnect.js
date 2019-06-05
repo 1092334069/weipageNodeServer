@@ -9,7 +9,7 @@ function mysqlConnect(sqlStr, sqlParam, callback, errorCallback) {
 		if (sqlParam) {
 			param = sqlParam
 		}
-		client.query(sqlStr, param, function(error, results) {
+		client.query(sqlStr, param, (error, results) => {
 			if (error) {
 				console.log(error)
 				if (errorCallback) {

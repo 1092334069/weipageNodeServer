@@ -24,9 +24,9 @@ class UserInfo {
 		const userInfoModel = new UserInfoModel()
 		userInfoModel.setId(param.id)
 
-		UserInfoServie.select(userInfoModel, function(res) {
+		UserInfoServie.select(userInfoModel, (res) => {
 			callback(resultUtil.success(res))
-		}, function() {
+		}, () => {
 			callback(resultUtil.sqlException())
 		})
 	}
@@ -50,9 +50,9 @@ class UserInfo {
 		const userInfoModel = new UserInfoModel()
 		userInfoModel.setPhone(param.phone)
 
-		UserInfoServie.selectByPhone(userInfoModel, function(res) {
+		UserInfoServie.selectByPhone(userInfoModel, (res) => {
 			callback(resultUtil.success(res))
-		}, function() {
+		}, () => {
 			callback(resultUtil.sqlException())
 		})
 	}

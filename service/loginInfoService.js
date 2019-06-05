@@ -19,14 +19,14 @@ class LoginInfoService {
 	selectByPhone(model, callback, errorCallback) {
 		const sql = `select * from ${this.tableName} where phone = ?`
 		const param = modelUtil.modelToArray(model, 'phone')
-		sqlConnect.connect(sql, param, function(res) {
+		sqlConnect.connect(sql, param, (res) => {
 			serviceUtil.selectOneCallback(res, callback)
 		}, errorCallback)
 	}
 	selectByUid(model, callback, errorCallback){
 		const sql = `select * from ${this.tableName} where uid = ?`
 		const param = modelUtil.modelToArray(model, 'uid')
-		sqlConnect.connect(sql, param, function(res) {
+		sqlConnect.connect(sql, param, (res) => {
 			serviceUtil.selectOneCallback(res, callback)
 		}, errorCallback)
 	}

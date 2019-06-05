@@ -30,13 +30,13 @@ function checkLogin(param, callback, errorCallback) {
 	const loginInfoModel = new LoginInfoModel()
 	loginInfoModel.setUid(param.uid)
 
-	loginInfoService.selectByUid(loginInfoModel, function(res) {
+	loginInfoService.selectByUid(loginInfoModel, (res) => {
 		if (res && res.token && res.token === param.token) {
 			callback(res)
 		} else {
 			errorCallback(resultUtil.unLogin('未登录'))
 		}
-	}, function() {
+	}, () => {
 		errorCallback(resultUtil.sqlException())
 	})
 }

@@ -19,7 +19,7 @@ class PhoneCodeService {
 	select(model, callback, errorCallback) {
 		const sql = `select * from ${this.tableName} where phone = ?`
 		const param = modelUtil.modelToArray(model, 'phone')
-		sqlConnect.connect(sql, param, function(res) {
+		sqlConnect.connect(sql, param, (res) => {
 			serviceUtil.selectOneCallback(res, callback)
 		}, errorCallback)
 	}

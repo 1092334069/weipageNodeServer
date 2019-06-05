@@ -26,7 +26,7 @@ function register(param, callback, errorCallback) {
 	const userInfoService = new UserInfoService()
 	const userInfoModel = new UserInfoModel()
 	userInfoModel.setPhone(param.phone)
-	userInfoService.insert(userInfoModel, function(res) {
+	userInfoService.insert(userInfoModel, (res) => {
 		if (res && res.id) {
 			insertToken({
 				uid: res.id,
@@ -35,7 +35,7 @@ function register(param, callback, errorCallback) {
 		} else {
 			callback(resultUtil.conditionError('登录注册失败'))
 		}
-	}, function() {
+	}, () => {
 		errorCallback(resultUtil.sqlException())
 	})
 }
@@ -68,7 +68,7 @@ function insertToken(param, callback, errorCallback) {
 	loginInfoModel.setToken(operationUtil.getToken())
 	loginInfoModel.setUpdateTime(new Date())
 
-	loginInfoService.insert(loginInfoModel, callback, function() {
+	loginInfoService.insert(loginInfoModel, callback, () => {
 		errorCallback(resultUtil.sqlException())
 	})
 }
@@ -83,13 +83,13 @@ function checkIsRegister(param, callback, errorCallback) {
 	const userInfoService = new UserInfoService()
 	const userInfoModel = new UserInfoModel()
 	userInfoModel.setPhone(param.phone)
-	userInfoService.checkIsRegister(userInfoModel, function(res) {
+	userInfoService.checkIsRegister(userInfoModel, (res) => {
 		if (res) {
 			callback()
 		} else {
 			errorCallback()
 		}
-	}, function() {
+	}, () => {
 		errorCallback(resultUtil.sqlException())
 	})
 }
@@ -106,17 +106,17 @@ function resetToken(param, callback, errorCallback) {
 		return
 	}
 
-	checkIsRegister(param, function() {
+	checkIsRegister(param, () => {
 		const loginInfoService = new LoginInfoService()
 		const loginInfoModel = new LoginInfoModel()
 		loginInfoModel.setPhone(param.phone)
 		loginInfoModel.setToken(operationUtil.getToken())
 		loginInfoModel.setUpdateTime(new Date())
 
-		loginInfoService.update(loginInfoModel, callback, function() {
+		loginInfoService.update(loginInfoModel, callback, () => {
 			errorCallback(resultUtil.sqlException())
 		})
-	}, function() {
+	}, () => {
 		register(param, callback, errorCallback)
 	})
 }
@@ -137,8 +137,8 @@ function getLoginToken(param, callback, errorCallback) {
 	const loginInfoModel = new LoginInfoModel()
 	loginInfoModel.setPhone(param.phone)
 
-	resetToken(param, function() {
-		loginInfoService.selectByPhone(loginInfoModel, function(res) {
+	resetToken(param, () => {
+		loginInfoService.selectByPhone(loginInfoModel, (res) => {
 			if (res) {
 				callback(resultUtil.success({
 					uid: res.uid,
@@ -147,7 +147,7 @@ function getLoginToken(param, callback, errorCallback) {
 			} else {
 				callback(resultUtil.conditionError('登录失败'))
 			}
-		}, function() {
+		}, () => {
 			errorCallback(resultUtil.sqlException())
 		})
 	}, errorCallback)
@@ -173,21 +173,21 @@ class LoginInfo {
 		phoneCodeModel.setUpdateTime(new Date())
 		phoneCodeModel.setCode(operationUtil.getPhoneCode())
 
-		phoneCodeService.select(phoneCodeModel, function(res) {
+		phoneCodeService.select(phoneCodeModel, (res) => {
 			if (res) {
-				phoneCodeService.update(phoneCodeModel, function() {
+				phoneCodeService.update(phoneCodeModel, () => {
 					callback(resultUtil.success({}, '获取验证码成功'))
-				}, function() {
+				}, () => {
 					callback(resultUtil.sqlException())
 				})
 			} else {
-				phoneCodeService.insert(phoneCodeModel, function() {
+				phoneCodeService.insert(phoneCodeModel, () => {
 					callback(resultUtil.success({}, '获取验证码成功'))
-				}, function() {
+				}, () => {
 					callback(resultUtil.sqlException())
 				})
 			}
-		}, function() {
+		}, () => {
 			callback(resultUtil.sqlException())
 		})
 	}
@@ -216,13 +216,13 @@ class LoginInfo {
 		const phoneCodeModel = new PhoneCodeModel()
 		phoneCodeModel.setPhone(param.phone)
 
-		phoneCodeService.select(phoneCodeModel, function(res) {
+		phoneCodeService.select(phoneCodeModel, (res) => {
 			if (res && res.code === param.code) {
 				getLoginToken(param, callback, callback)
 			} else {
 				callback(resultUtil.conditionError('验证码错误'))
 			}
-		}, function(res) {
+		}, () => {
 			callback(resultUtil.sqlException())
 		})
 	}
@@ -251,13 +251,13 @@ class LoginInfo {
 		const phonePasswordModel = new PhonePasswordModel()
 		phonePasswordModel.setPhone(param.phone)
 
-		phonePasswordService.select(phonePasswordModel, function(res) {
+		phonePasswordService.select(phonePasswordModel, (res) => {
 			if (res && res.password === param.password) {
 				getLoginToken(param, callback, callback)
 			} else {
 				callback(resultUtil.conditionError('密码错误'))
 			}
-		}, function(res) {
+		}, () => {
 			callback(resultUtil.sqlException())
 		})
 	}

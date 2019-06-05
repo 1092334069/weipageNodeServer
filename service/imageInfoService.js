@@ -23,7 +23,7 @@ class ImageInfoService {
 	select(model, callback, errorCallback) {
 		const sql = `select * from ${this.tableName} where id = ?`
 		const param = modelUtil.modelToArray(model, 'id')
-		sqlConnect.connect(sql, param, function(res) {
+		sqlConnect.connect(sql, param, (res) => {
 			serviceUtil.selectOneCallback(res, callback)
 		}, errorCallback)
 	}

@@ -8,7 +8,7 @@ class UserInfoService {
 	insert(model, callback, errorCallback) {
 		const sql = `insert into ${this.tableName}(id,name,phone,grade,isVip,status,remark,createTime) values(0,?,?,?,?,?,?,?)`
 		const param = modelUtil.modelToArray(model, 'name,phone,grade,isVip,status,remark,createTime')
-		sqlConnect.connect(sql, param, function(res) {
+		sqlConnect.connect(sql, param, (res) => {
 			callback({id: res.insertId})
 		}, errorCallback)
 	}
@@ -25,21 +25,21 @@ class UserInfoService {
 	select(model, callback, errorCallback) {
 		const sql = `select * from ${this.tableName} where id = ?`
 		const param = modelUtil.modelToArray(model, 'id')
-		sqlConnect.connect(sql, param, function(res) {
+		sqlConnect.connect(sql, param, (res) => {
 			serviceUtil.selectOneCallback(res, callback)
 		}, errorCallback)
 	}
 	selectByPhone(model, callback, errorCallback) {
 		const sql = `select * from ${this.tableName} where phone = ?`
 		const param = modelUtil.modelToArray(model, 'phone')
-		sqlConnect.connect(sql, param, function(res) {
+		sqlConnect.connect(sql, param, (res) => {
 			serviceUtil.selectOneCallback(res, callback)
 		}, errorCallback)
 	}
 	checkIsRegister(model, callback, errorCallback) {
 		const sql = `select id from ${this.tableName} where phone = ?`
 		const param = modelUtil.modelToArray(model, 'phone')
-		sqlConnect.connect(sql, param, function(res) {
+		sqlConnect.connect(sql, param, (res) => {
 			if (res && Array.isArray(res) && res.length) {
 				callback(true)
 			} else {
