@@ -138,7 +138,7 @@ function getLoginToken(param, callback, errorCallback) {
 	loginInfoModel.setPhone(param.phone)
 
 	resetToken(param, function() {
-		loginInfoService.select(loginInfoModel, function(res) {
+		loginInfoService.selectByPhone(loginInfoModel, function(res) {
 			if (res) {
 				callback(resultUtil.success({
 					uid: res.uid,

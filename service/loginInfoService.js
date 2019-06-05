@@ -2,7 +2,7 @@ const sqlConnect = require('../datebase/sqlConnect')
 const modelUtil = require('../libs/modelUtil')
 const serviceUtil = require('../libs/serviceUtil')
 
-class PhoneCodeService {
+class LoginInfoService {
 	constructor() {
 		this.tableName = 'login_info'
 	}
@@ -16,7 +16,7 @@ class PhoneCodeService {
 		const param = modelUtil.modelToArray(model, 'token,updateTime,phone')
 		sqlConnect.connect(sql, param, callback, errorCallback)
 	}
-	select(model, callback, errorCallback) {
+	selectByPhone(model, callback, errorCallback) {
 		const sql = `select * from ${this.tableName} where phone = ?`
 		const param = modelUtil.modelToArray(model, 'phone')
 		sqlConnect.connect(sql, param, function(res) {
@@ -32,4 +32,4 @@ class PhoneCodeService {
 	}
 }
 
-module.exports = PhoneCodeService
+module.exports = LoginInfoService
