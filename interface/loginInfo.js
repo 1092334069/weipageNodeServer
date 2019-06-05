@@ -63,7 +63,7 @@ function insertToken(param, callback, errorCallback) {
 
 	const loginInfoService = new LoginInfoService()
 	const loginInfoModel = new LoginInfoModel()
-	loginInfoModel.setuid(param.uid)
+	loginInfoModel.setUid(param.uid)
 	loginInfoModel.setPhone(param.phone)
 	loginInfoModel.setToken(operationUtil.getToken())
 	loginInfoModel.setUpdateTime(new Date())
