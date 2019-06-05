@@ -63,10 +63,10 @@ function insertToken(param, callback, errorCallback) {
 *	}
 */
 function checkIsRegister(param, callback, errorCallback) {
-	const loginInfoService = new LoginInfoService()
-	const loginInfoModel = new LoginInfoModel()
-	loginInfoModel.setPhone(param.phone)
-	loginInfoService.checkIsRegister(loginInfoModel, function(res) {
+	const userInfoService = new UserInfoService()
+	const userInfoModel = new UserInfoModel()
+	userInfoModel.setPhone(param.phone)
+	userInfoService.checkIsRegister(loginInfoModel, function(res) {
 		if (res) {
 			callback()
 		} else {
