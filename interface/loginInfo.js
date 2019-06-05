@@ -139,10 +139,14 @@ function getLoginToken(param, callback, errorCallback) {
 
 	resetToken(param, function() {
 		loginInfoService.select(loginInfoModel, function(res) {
-			callback(resultUtil.success({
-				uid: res.uid,
-				token: res.token
-			}, '登录成功'))
+			if (res) {
+				callback(resultUtil.success({
+					uid: res.uid,
+					token: res.token
+				}, '登录成功'))
+			} else {
+				callback(resultUtil.conditionError('登录失败'))
+			}
 		}, function() {
 			errorCallback(resultUtil.sqlException())
 		})

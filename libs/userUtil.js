@@ -8,7 +8,7 @@ const operationUtil = require('./operationUtil')
 /*
 *	校验登录
 *	param {
-*		phone 	手机号码
+*		uid 	手机号码
 *		token	用户状态码
 *	}
 */
@@ -17,8 +17,8 @@ function checkLogin(param, callback, errorCallback) {
 		errorCallback(resultUtil.missParam('缺少参数'))
 		return
 	}
-	if (!param.phone) {
-		errorCallback(resultUtil.missParam('缺少手机号码'))
+	if (!param.uid) {
+		errorCallback(resultUtil.missParam('缺少uid'))
 		return
 	}
 	if (!param.token) {
@@ -28,9 +28,9 @@ function checkLogin(param, callback, errorCallback) {
 
 	const loginInfoService = new LoginInfoService()
 	const loginInfoModel = new LoginInfoModel()
-	loginInfoModel.setPhone(param.phone)
+	loginInfoModel.setUid(param.uid)
 
-	loginInfoService.select(loginInfoModel, function(res) {
+	loginInfoService.selectByUid(loginInfoModel, function(res) {
 		if (res && res.token && res.token === param.token) {
 			callback(res)
 		} else {

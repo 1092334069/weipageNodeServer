@@ -23,6 +23,13 @@ class PhoneCodeService {
 			serviceUtil.selectOneCallback(res, callback)
 		}, errorCallback)
 	}
+	selectByUid(){
+		const sql = `select * from ${this.tableName} where uid = ?`
+		const param = modelUtil.modelToArray(model, 'uid')
+		sqlConnect.connect(sql, param, function(res) {
+			serviceUtil.selectOneCallback(res, callback)
+		}, errorCallback)
+	}
 }
 
 module.exports = PhoneCodeService
