@@ -1,7 +1,7 @@
 const LoginInfoService = require('../service/loginInfoService')
 const LoginInfoModel = require('../model/loginInfoModel')
 const PhoneCodeService = require('../service/phoneCodeService')
-const PhoneCodeModel = require('../model/phoneCodeModel.js')
+const PhoneCodeModel = require('../model/phoneCodeModel')
 const PhonePasswordService = require('../service/phonePasswordService')
 const PhonePasswordModel = require('../model/phonePasswordModel')
 const UserInfoService = require('../service/userInfoService')
@@ -66,7 +66,7 @@ function checkIsRegister(param, callback, errorCallback) {
 	const userInfoService = new UserInfoService()
 	const userInfoModel = new UserInfoModel()
 	userInfoModel.setPhone(param.phone)
-	userInfoService.checkIsRegister(loginInfoModel, function(res) {
+	userInfoService.checkIsRegister(userInfoModel, function(res) {
 		if (res) {
 			callback()
 		} else {
