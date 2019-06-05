@@ -27,7 +27,14 @@ function register(param, callback, errorCallback) {
 	const userInfoModel = new UserInfoModel()
 	userInfoModel.setPhone(param.phone)
 	userInfoService.insert(userInfoModel, function(res) {
-		insertToken(param, callback, errorCallback)
+		if (res && res.id) {
+			insertToken({
+				uid: res.id,
+				phone: param.phone
+			}, callback, errorCallback)
+		} else {
+			callback(resultUtil.conditionError('登录注册失败'))
+		}
 	}, function() {
 		errorCallback(resultUtil.sqlException())
 	})
@@ -36,17 +43,27 @@ function register(param, callback, errorCallback) {
 /*
 *	新增登录token	（该接口在注册的时候调用）
 *	param {
+*		uid 	用户id
 *		phone 	手机号码
 *	}
 */
 function insertToken(param, callback, errorCallback) {
-	if (!param || !param.phone) {
+	if (!param) {
+		errorCallback(resultUtil.missParam('缺少参数'))
+		return
+	}
+	if (!param.uid) {
+		errorCallback(resultUtil.missParam('缺少用户id'))
+		return
+	}
+	if (!param.phone) {
 		errorCallback(resultUtil.missParam('缺少手机号码'))
 		return
 	}
 
 	const loginInfoService = new LoginInfoService()
 	const loginInfoModel = new LoginInfoModel()
+	loginInfoModel.setuid(param.uid)
 	loginInfoModel.setPhone(param.phone)
 	loginInfoModel.setToken(operationUtil.getToken())
 	loginInfoModel.setUpdateTime(new Date())
@@ -123,7 +140,7 @@ function getLoginToken(param, callback, errorCallback) {
 	resetToken(param, function() {
 		loginInfoService.select(loginInfoModel, function(res) {
 			callback(resultUtil.success({
-				phone: res.phone,
+				uid: res.uid,
 				token: res.token
 			}, '登录成功'))
 		}, function() {

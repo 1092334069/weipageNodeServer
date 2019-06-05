@@ -7,8 +7,8 @@ class PhoneCodeService {
 		this.tableName = 'login_info'
 	}
 	insert(model, callback, errorCallback) {
-		const sql = `insert into ${this.tableName}(phone,token,updateTime) values(?,?,?)`
-		const param = modelUtil.modelToArray(model, 'phone,token,updateTime')
+		const sql = `insert into ${this.tableName}(uid,phone,token,updateTime) values(?,?,?,?)`
+		const param = modelUtil.modelToArray(model, 'uid,phone,token,updateTime')
 		sqlConnect.connect(sql, param, callback, errorCallback)
 	}
 	update(model, callback, errorCallback) {
