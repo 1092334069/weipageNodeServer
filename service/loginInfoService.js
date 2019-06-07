@@ -7,8 +7,8 @@ class LoginInfoService {
 		this.tableName = 'login_info'
 	}
 	insert(model, callback, errorCallback) {
-		const sql = `insert into ${this.tableName}(uid,phone,token,updateTime) values(?,?,?,?)`
-		const param = modelUtil.modelToArray(model, 'uid,phone,token,updateTime')
+		const sql = `insert into ${this.tableName}(userId,phone,token,updateTime) values(?,?,?,?)`
+		const param = modelUtil.modelToArray(model, 'userId,phone,token,updateTime')
 		sqlConnect.connect(sql, param, callback, errorCallback)
 	}
 	update(model, callback, errorCallback) {
@@ -23,9 +23,9 @@ class LoginInfoService {
 			serviceUtil.selectOneCallback(res, callback)
 		}, errorCallback)
 	}
-	selectByUid(model, callback, errorCallback){
-		const sql = `select * from ${this.tableName} where uid = ?`
-		const param = modelUtil.modelToArray(model, 'uid')
+	selectByUserId(model, callback, errorCallback){
+		const sql = `select * from ${this.tableName} where userId = ?`
+		const param = modelUtil.modelToArray(model, 'userId')
 		sqlConnect.connect(sql, param, (res) => {
 			serviceUtil.selectOneCallback(res, callback)
 		}, errorCallback)

@@ -1,15 +1,15 @@
 class LoginInfoModel {
 	constructor() {	
-		this.uid = 0
+		this.userId = 0
 		this.phone = ''
 		this.token = ''
 		this.updateTime = new Date()
 	}
-	getUid() {
-		return this.uid
+	getUserId() {
+		return this.userId
 	}
-	setUid(uid) {
-		this.uid = parseInt(uid)
+	setUserId(userId) {
+		this.userId = parseInt(userId)
 	}
 	getPhone() {
 		return this.phone

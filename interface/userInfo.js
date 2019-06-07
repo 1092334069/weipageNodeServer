@@ -7,7 +7,7 @@ class UserInfo {
 	/*
 	*	获取用户详情
 	*	param {
-	*		uid 	用户id
+	*		userId 	用户id
 	*	}
 	*/
 	getUserDetail(param, callback) {
@@ -15,14 +15,14 @@ class UserInfo {
 			callback(resultUtil.missParam('缺少参数'))
 			return
 		}
-		if (!param.uid) {
-			callback(resultUtil.missParam('缺少id'))
+		if (!param.userId) {
+			callback(resultUtil.unLogin('未登录'))
 			return
 		}
 
 		const userInfoService = new UserInfoService()
 		const userInfoModel = new UserInfoModel()
-		userInfoModel.setId(param.uid)
+		userInfoModel.setId(param.userId)
 
 		userInfoService.select(userInfoModel, (res) => {
 			callback(resultUtil.success(res))
