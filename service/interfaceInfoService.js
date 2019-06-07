@@ -53,7 +53,7 @@ class InterfaceInfoService {
 			return
 		}
 		const sql = `select id,name,url,createTime from ${this.tableName} userId = ? order by id desc ${limit}`
-		const param = modelUtil.modelToArray(param.model, 'userId')
+		const param = modelUtil.modelToArray(parameter.model, 'userId')
 		sqlConnect.connect(sql, param, (res) => {
 			serviceUtil.selectListCallback(res, callback)
 		}, errorCallback)
