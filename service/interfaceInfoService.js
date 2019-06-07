@@ -52,8 +52,8 @@ class InterfaceInfoService {
 			errorCallback()
 			return
 		}
-		const sql = `select id,name,url,createTime from ${this.tableName} userId = ${parameter.model.userId} order by id desc ${limit}`
-		const param = []
+		const sql = `select id,name,url,createTime from ${this.tableName} where userId = ? order by id desc ${limit}`
+		const param = modelUtil.modelToArray(parameter.model, 'userId')
 		sqlConnect.connect(sql, param, (res) => {
 			serviceUtil.selectListCallback(res, callback)
 		}, errorCallback)
