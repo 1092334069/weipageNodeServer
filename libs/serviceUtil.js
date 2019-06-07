@@ -22,10 +22,10 @@ function selectListCallback(res, callback) {
 				for (let i = 0; i < res.length; i++) {
 					const obj = {}
 					for (let key in res[i]) {
-						obj[key] = res[i].key
+						obj[key] = res[i][0].key
 					}
 					console.log(obj)
-					list.push(res[i])
+					list.push(obj)
 				}
 				callback({
 					list
