@@ -25,7 +25,7 @@ function selectListCallback(res, callback) {
 						obj[key] = res[i].key
 					}
 					console.log(obj)
-					list.push(obj)
+					list.push(res[i])
 				}
 				callback({
 					list
