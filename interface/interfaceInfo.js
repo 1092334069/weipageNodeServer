@@ -160,7 +160,7 @@ class InterfaceInfo {
 		interfaceInfoModel.setId(param.interfaceId)
 
 		interfaceInfoService.select(interfaceInfoModel, (res) => {
-			if (res && res.userId === param.userId) {
+			if (res && res.userId === parseInt(param.userId)) {
 				callback(resultUtil.success({
 					interfaceId: res.id,
 					name: res.name,
