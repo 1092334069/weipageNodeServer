@@ -101,7 +101,7 @@ class InterfaceInfo {
 		interfaceInfoModel.setUserId(param.userId)
 
 		interfaceInfoService.update(interfaceInfoModel, (res) => {
-			callback(resultUtil.success({}, '修改成功'))
+			callback(resultUtil.success(res, '修改成功'))
 		}, () => {
 			errorCallback(resultUtil.sqlException())
 		})
@@ -133,6 +133,36 @@ class InterfaceInfo {
 			callback(resultUtil.success(res, '删除成功'))
 		}, () => {
 			errorCallback(resultUtil.sqlException())
+		})
+	}
+	/*
+	*	接口详情
+	*	param {
+	*		interfaceId 	接口id
+	*	}
+	*/
+	detail(param, callback, errorCallback) {
+		if (!param) {
+			errorCallback(resultUtil.missParam('缺少参数'))
+			return
+		}
+		if (!param.userId) {
+			callback(resultUtil.unLogin('未登录'))
+			return
+		}
+		if (!param.interfaceId) {
+			errorCallback(resultUtil.missParam('缺少接口id'))
+			return
+		}
+
+		const interfaceInfoService = new InterfaceInfoService()
+		const interfaceInfoModel = new InterfaceInfoModel()
+		interfaceInfoModel.setId(param.interfaceId)
+
+		interfaceInfoService.select(interfaceInfoModel, (res) => {
+			callback(resultUtil.success(res))
+		}, () => {
+			callback(resultUtil.sqlException())
 		})
 	}
 }

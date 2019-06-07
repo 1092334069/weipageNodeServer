@@ -14,6 +14,10 @@ const router = [{
 	pathname: '/api/interface/delete',
 	action: interfaceInfo.delete,
 	isLogin: true
+},{
+	pathname: '/api/interface/detail',
+	action: interfaceInfo.detail,
+	isLogin: true
 }]
 
 module.exports = router
