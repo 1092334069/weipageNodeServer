@@ -20,7 +20,7 @@ function selectListCallback(res, callback) {
 			if (res.length) {
 				let list = []
 				for (let i = 0; i < res.length; i++) {
-					list.psuh(res[i])
+					list.push(res[i])
 				}
 				callback({
 					list

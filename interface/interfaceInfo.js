@@ -212,7 +212,7 @@ class InterfaceInfo {
 			page: param.page,
 			size: param.size
 		}, (res) => {
-			callback(resultUtil.success(res))
+			callback(resultUtil.success(res, '获取成功'))
 		}, () => {
 			callback(resultUtil.sqlException())
 		})
