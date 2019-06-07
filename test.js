@@ -3,10 +3,9 @@ const interfaceInfo = new InterfaceInfo()
 
 interfaceInfo.insert({
 	userId: 1,
-	type: 'post',
-	name: '测试第二个接口',
-	url: 'http://zhinengluodiye.com/test/first',
-	param: '[{"key":"phone","name":"手机号码","type":"number"}]'
+	type: 'get',
+	name: '测试第三个接口',
+	url: 'http://zhinengluodiye.com/test/third',
 }, (res) => {
 	console.log(res)
 })

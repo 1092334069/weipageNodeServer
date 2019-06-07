@@ -47,9 +47,9 @@ class InterfaceInfo {
 
 		interfaceInfoService.insert(interfaceInfoModel, (res) => {
 			if (res && res.id) {
-				resultUtil.success({
+				callback(resultUtil.success({
 					interfaceId: res.id
-				}, '创建成功')
+				}, '创建成功'))
 			} else {
 				callback(resultUtil.conditionError('创建失败'))
 			}
