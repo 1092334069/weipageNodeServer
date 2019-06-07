@@ -18,17 +18,8 @@ function selectListCallback(res, callback) {
 	if (res) {
 		if (Array.isArray(res)) {
 			if (res.length) {
-				let list = []
-				for (let i = 0; i < res.length; i++) {
-					const obj = {}
-					for (let key in res[i]) {
-						obj[key] = res[i][0].key
-					}
-					console.log(obj)
-					list.push(obj)
-				}
 				callback({
-					list
+					list: JSON.parse(JSON.stringify(res))
 				})
 				return
 			}
