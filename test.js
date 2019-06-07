@@ -1,10 +1,11 @@
 const InterfaceInfo = require('./interface/interfaceInfo')
 const interfaceInfo = new InterfaceInfo()
 
-interfaceInfo.insert({
-	userId: 1,
+interfaceInfo.update({
+	userId: 2,
+	interfaceId: 3,
 	type: 'get',
-	name: '测试第三个接口',
+	name: '接口3',
 	url: 'http://zhinengluodiye.com/test/third',
 }, (res) => {
 	console.log(res)
