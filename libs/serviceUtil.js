@@ -21,16 +21,13 @@ function selectListCallback(res, callback) {
 				let list = []
 				for (let i = 0; i < res.length; i++) {
 					const obj = {}
-					console.log(res[i])
 					for (let key in res[i]) {
-						console.log(key)
 						obj[key] = res[i][key]
 					}
-					console.log(obj)
 					list.push(obj)
 				}
 				callback({
-					list
+					list: JSON.stringify(list)
 				})
 				return
 			}
