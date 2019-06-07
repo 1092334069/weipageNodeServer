@@ -1,10 +1,9 @@
-const userUtil = require('./libs/userUtil')
+const LoginInfo = require('./interface/loginInfo')
+const loginInfo = new LoginInfo()
 
-userUtil.checkLogin({
-	uid: 3,
-	token: '155974226912894736'
-}, (res) => {
-	console.log(res)
+loginInfo.phonePasswordLogin({
+	phone: '13651438085',
+	password: '123456'
 }, (res) => {
 	console.log(res)
 })
