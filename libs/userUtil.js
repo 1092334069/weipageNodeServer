@@ -32,7 +32,7 @@ function checkLogin(param, callback, errorCallback) {
 
 	loginInfoService.selectByUid(loginInfoModel, (res) => {
 		if (res && res.token && res.token === param.token) {
-			callback(res)
+			callback()
 		} else {
 			errorCallback(resultUtil.unLogin('未登录'))
 		}
