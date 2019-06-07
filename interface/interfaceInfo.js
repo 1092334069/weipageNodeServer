@@ -186,7 +186,7 @@ class InterfaceInfo {
 	*		size	页量
 	*	}
 	*/
-	getPageList(param) {
+	getPageList(param, callback) {
 		if (!param) {
 			callback(resultUtil.missParam('缺少参数'))
 			return
