@@ -1,6 +1,6 @@
 class InterfaceInfoModel {
 	constructor() {
-		this id = 0
+		this.id = 0
 		this.name = ''
 		this.type = ''
 		this.url = ''
