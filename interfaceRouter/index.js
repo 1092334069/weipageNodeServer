@@ -13,7 +13,9 @@ function interfaceAction(pathname, param, callback) {
 	for (let i = 0; i < routerList.length; i ++) {
 		if (pathname === routerList[i].pathname) {
 			if (routerList[i].isLogin) {
-				userUtil.checkLogin(param, callback, callback)
+				userUtil.checkLogin(param, () => {
+					routerList[i].action(param, callback)
+				}, callback)
 			} else {
 				routerList[i].action(param, callback)
 			}
