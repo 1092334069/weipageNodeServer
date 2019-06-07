@@ -1,9 +1,8 @@
-const LoginInfo = require('./interface/loginInfo')
-const loginInfo = new LoginInfo()
+const UserInfo = require('./interface/userInfo')
+const userInfo = new UserInfo()
 
-loginInfo.phonePasswordLogin({
-	phone: '13651438085',
-	password: '123456'
+userInfo.getUserDetail({
+	uid: 1
 }, (res) => {
 	console.log(res)
 })

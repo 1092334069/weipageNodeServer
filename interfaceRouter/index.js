@@ -1,25 +1,33 @@
 const resultUtil = require('../libs/resultUtil')
-const loginRouter = require('./loginRouter')
+const userUtil = require('../libs/userUtil')
 
 const routerList = []
-
 function jionRouterList(router) {
 	for (let i = 0; i < router.length; i++) {
 		routerList.push(router[i])
 	}
 }
 
-jionRouterList(loginRouter)
-
+// 路由相应
 function interfaceAction(pathname, param, callback) {
 	for (let i = 0; i < routerList.length; i ++) {
 		if (pathname === routerList[i].pathname) {
-			routerList[i].action(param, callback)
+			if (routerList[i].isLogin) {
+				userUtil.checkLogin(param, callback, callback)
+			} else {
+				routerList[i].action(param, callback)
+			}
 			return
 		}
 	}
 	callback(resultUtil.searchEmpty('没有查找到接口' + pathname))
 }
+
+// 注册路由表
+const loginRouter = require('./loginRouter')
+const userRouter = require('./userRouter')
+jionRouterList(loginRouter)
+jionRouterList(userRouter)
 
 module.exports = {
 	interfaceAction
