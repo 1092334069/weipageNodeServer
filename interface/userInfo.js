@@ -25,7 +25,11 @@ class UserInfo {
 		userInfoModel.setId(param.userId)
 
 		userInfoService.select(userInfoModel, (res) => {
-			callback(resultUtil.success(res))
+			if (res) {
+				callback(resultUtil.success(res))
+			} else {
+				callback(resultUtil.searchEmpty('未找到该用户'))
+			}
 		}, () => {
 			callback(resultUtil.sqlException())
 		})

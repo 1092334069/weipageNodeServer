@@ -160,7 +160,19 @@ class InterfaceInfo {
 		interfaceInfoModel.setId(param.interfaceId)
 
 		interfaceInfoService.select(interfaceInfoModel, (res) => {
-			callback(resultUtil.success(res))
+			if (res) {
+				callback(resultUtil.success({
+					interfaceId: res.id,
+					name: res.name,
+					type: res.type,
+					url: res.url,
+					param: res.param,
+					dataType: res.dataType,
+					callbackParam: res.callbackParam
+				}))
+			} else {
+				callback(resultUtil.searchEmpty('未找到该接口'))
+			}
 		}, () => {
 			callback(resultUtil.sqlException())
 		})
