@@ -20,8 +20,12 @@ function selectListCallback(res, callback) {
 			if (res.length) {
 				let list = []
 				for (let i = 0; i < res.length; i++) {
-					console.log(res[i])
-					list.push(res[i])
+					const obj = {}
+					for (let key in res[i]) {
+						obj[key] = res[i].key
+					}
+					console.log(obj)
+					list.push(obj)
 				}
 				callback({
 					list
