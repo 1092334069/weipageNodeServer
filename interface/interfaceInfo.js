@@ -17,9 +17,9 @@ class InterfaceInfo {
 	*						[{key:'', name:'', type:'', child:[]}]	参数标示，参数名称，参数数据格式（默认为string），子参数（当type为object或array时使用）
 	*	}
 	*/
-	insert(param, callback, errorCallback) {
+	insert(param, callback) {
 		if (!param) {
-			errorCallback(resultUtil.missParam('缺少参数'))
+			callback(resultUtil.missParam('缺少参数'))
 			return
 		}
 		if (!param.userId) {
@@ -27,11 +27,11 @@ class InterfaceInfo {
 			return
 		}
 		if (!param.name) {
-			errorCallback(resultUtil.missParam('缺少接口名称'))
+			callback(resultUtil.missParam('缺少接口名称'))
 			return
 		}
 		if (!param.url) {
-			errorCallback(resultUtil.missParam('缺少接口地址'))
+			callback(resultUtil.missParam('缺少接口地址'))
 			return
 		}
 		
@@ -50,7 +50,7 @@ class InterfaceInfo {
 				interfaceId: res.id
 			}, '创建成功'))
 		}, () => {
-			errorCallback(resultUtil.sqlException())
+			callback(resultUtil.sqlException())
 		})
 	}
 	/*
@@ -67,9 +67,9 @@ class InterfaceInfo {
 	*						[{key:'', name:'', type:'', child:[]}]	参数标示，参数名称，参数数据格式（默认为string），子参数（当type为object或array时使用）
 	*	}
 	*/
-	update(param, callback, errorCallback) {
+	update(param, callback) {
 		if (!param) {
-			errorCallback(resultUtil.missParam('缺少参数'))
+			callback(resultUtil.missParam('缺少参数'))
 			return
 		}
 		if (!param.userId) {
@@ -77,15 +77,15 @@ class InterfaceInfo {
 			return
 		}
 		if (!param.interfaceId) {
-			errorCallback(resultUtil.missParam('缺少接口id'))
+			callback(resultUtil.missParam('缺少接口id'))
 			return
 		}
 		if (!param.name) {
-			errorCallback(resultUtil.missParam('缺少接口名称'))
+			callback(resultUtil.missParam('缺少接口名称'))
 			return
 		}
 		if (!param.url) {
-			errorCallback(resultUtil.missParam('缺少接口地址'))
+			callback(resultUtil.missParam('缺少接口地址'))
 			return
 		}
 		
@@ -103,7 +103,7 @@ class InterfaceInfo {
 		interfaceInfoService.update(interfaceInfoModel, (res) => {
 			callback(resultUtil.success(res, '修改成功'))
 		}, () => {
-			errorCallback(resultUtil.sqlException())
+			callback(resultUtil.sqlException())
 		})
 	}
 	/*
@@ -112,9 +112,9 @@ class InterfaceInfo {
 	*		interfaceId 	接口id
 	*	}
 	*/
-	delete(param, callback, errorCallback) {
+	delete(param, callback) {
 		if (!param) {
-			errorCallback(resultUtil.missParam('缺少参数'))
+			callback(resultUtil.missParam('缺少参数'))
 			return
 		}
 		if (!param.userId) {
@@ -122,7 +122,7 @@ class InterfaceInfo {
 			return
 		}
 		if (!param.interfaceId) {
-			errorCallback(resultUtil.missParam('缺少接口id'))
+			callback(resultUtil.missParam('缺少接口id'))
 			return
 		}
 		const interfaceInfoService = new InterfaceInfoService()
@@ -133,7 +133,7 @@ class InterfaceInfo {
 		interfaceInfoService.delete(interfaceInfoModel, (res) => {
 			callback(resultUtil.success(res, '删除成功'))
 		}, () => {
-			errorCallback(resultUtil.sqlException())
+			callback(resultUtil.sqlException())
 		})
 	}
 	/*
@@ -142,9 +142,9 @@ class InterfaceInfo {
 	*		interfaceId 	接口id
 	*	}
 	*/
-	detail(param, callback, errorCallback) {
+	detail(param, callback) {
 		if (!param) {
-			errorCallback(resultUtil.missParam('缺少参数'))
+			callback(resultUtil.missParam('缺少参数'))
 			return
 		}
 		if (!param.userId) {
@@ -152,7 +152,7 @@ class InterfaceInfo {
 			return
 		}
 		if (!param.interfaceId) {
-			errorCallback(resultUtil.missParam('缺少接口id'))
+			callback(resultUtil.missParam('缺少接口id'))
 			return
 		}
 
