@@ -179,6 +179,44 @@ class InterfaceInfo {
 			callback(resultUtil.sqlException())
 		})
 	}
+	/*
+	*	接口分页列表
+	*	param {
+	*		page 	页码
+	*		size	页量
+	*	}
+	*/
+	getPageList(param) {
+		if (!param) {
+			callback(resultUtil.missParam('缺少参数'))
+			return
+		}
+		if (!param.userId) {
+			callback(resultUtil.unLogin('未登录'))
+			return
+		}
+		if (!param.page) {
+			callback(resultUtil.missParam('缺少页码'))
+			return
+		}
+		if (!param.size) {
+			callback(resultUtil.missParam('缺少页量'))
+			return
+		}
+		const interfaceInfoService = new InterfaceInfoService()
+		const interfaceInfoModel = new InterfaceInfoModel()
+		interfaceInfoModel.setUserId(param.userId)
+
+		interfaceInfoService.selectPageList({
+			model: interfaceInfoModel,
+			page: param.page,
+			size: param.size
+		}, (res) => {
+			callback(resultUtil.success(res))
+		}, () => {
+			callback(resultUtil.sqlException())
+		})
+	}
 }
 
 module.exports = InterfaceInfo

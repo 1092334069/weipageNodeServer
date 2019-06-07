@@ -18,6 +18,10 @@ const router = [{
 	pathname: '/api/interface/detail',
 	action: interfaceInfo.detail,
 	isLogin: true
+},{
+	pathname: '/api/interface/getPageList',
+	action: interfaceInfo.getPageList,
+	isLogin: true
 }]
 
 module.exports = router

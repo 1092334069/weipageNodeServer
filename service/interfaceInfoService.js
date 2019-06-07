@@ -46,6 +46,18 @@ class InterfaceInfoService {
 			serviceUtil.selectOneCallback(res, callback)
 		}, errorCallback)
 	}
+	selectPageList(parameter, callback, errorCallback) {
+		const limit = serviceUtil.parseLimit(parameter)
+		if (!limit || !parameter.model) {
+			errorCallback()
+			return
+		}
+		const sql = `select id,name,url,createTime from ${this.tableName} userId = ? order by id desc ${limit}`
+		const param = modelUtil.modelToArray(param.model, 'userId')
+		sqlConnect.connect(sql, param, (res) => {
+			serviceUtil.selectListCallback(res, callback)
+		}, errorCallback)
+	}
 }
 
 module.exports = InterfaceInfoService

@@ -1,12 +1,10 @@
 const InterfaceInfo = require('./interface/interfaceInfo')
 const interfaceInfo = new InterfaceInfo()
 
-interfaceInfo.update({
+interfaceInfo.getPageList({
 	userId: 2,
-	interfaceId: 3,
-	type: 'get',
-	name: '接口3',
-	url: 'http://zhinengluodiye.com/test/third',
+	page: 2,
+	size: 3
 }, (res) => {
 	console.log(res)
 })
