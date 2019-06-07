@@ -4,7 +4,8 @@ const userInfo = new UserInfo()
 
 const router = [{
 	pathname: '/api/user/detail',
-	action: userInfo.getUserDetail
+	action: userInfo.getUserDetail,
+	isLogin: true
 }]
 
 module.exports = router
