@@ -15,14 +15,13 @@ function selectOneCallback(res, callback) {
 }
 
 function selectListCallback(res, callback) {
-	console.log(res)
 	if (res) {
 		if (Array.isArray(res)) {
 			if (res.length) {
 				let list = []
 				for (let i = 0; i < res.length; i++) {
 					console.log(res[i])
-					list.push(res[i].RowDataPacket)
+					list.push(res[i])
 				}
 				callback({
 					list
