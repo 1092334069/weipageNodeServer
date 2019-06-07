@@ -58,3 +58,5 @@ class InterfaceInfo {
 		})
 	}
 }
+
+module.exports = InterfaceInfo
