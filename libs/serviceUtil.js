@@ -27,7 +27,7 @@ function selectListCallback(res, callback) {
 					list.push(obj)
 				}
 				callback({
-					list: JSON.parse(JSON.stringify(list))
+					list
 				})
 				return
 			}
