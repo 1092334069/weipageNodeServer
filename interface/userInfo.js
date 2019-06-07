@@ -1,5 +1,5 @@
-const UserInfoServie = require('../service/userInfoServie')
-const UserInfoModel = require('../model/UserInfoModel')
+const UserInfoService = require('../service/userInfoService')
+const UserInfoModel = require('../model/userInfoModel')
 
 const resultUtil = require('../libs/resultUtil')
 
@@ -20,11 +20,11 @@ class UserInfo {
 			return
 		}
 
-		const userInfoServie = new UserInfoServie()
+		const userInfoService = new UserInfoService()
 		const userInfoModel = new UserInfoModel()
 		userInfoModel.setId(param.uid)
 
-		UserInfoServie.select(userInfoModel, (res) => {
+		userInfoService.select(userInfoModel, (res) => {
 			callback(resultUtil.success(res))
 		}, () => {
 			callback(resultUtil.sqlException())
