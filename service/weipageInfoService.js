@@ -10,7 +10,7 @@ class WeipageInfoService {
 		const sql = `insert into ${this.tableName}(id,name,describe,cover,pageName,data,userId,createTime) values(0,?,?,?,?,?,?,?)`
 		const param = modelUtil.modelToArray(model, 'name,describe,cover,pageName,data,userId,createTime')
 		sqlConnect.connect(sql, param, (res) => {
-			callback({id: res.OkPacket.insertId})
+			callback({id: res.insertId})
 		}, errorCallback)
 	}
 	update(model, callback, errorCallback) {

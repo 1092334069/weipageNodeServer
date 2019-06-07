@@ -43,7 +43,7 @@ class InterfaceInfo {
 		interfaceInfoModel.setParam(param.param || '')
 		interfaceInfoModel.setDataType(param.dataType || 'json')
 		interfaceInfoModel.setCallbackParam(param.callbackParam || '')
-		interfaceInfoModel.getUserId(param.userId)
+		interfaceInfoModel.setUserId(param.userId)
 
 		interfaceInfoService.insert(interfaceInfoModel, (res) => {
 			if (res && res.id) {

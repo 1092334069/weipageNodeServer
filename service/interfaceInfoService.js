@@ -10,7 +10,7 @@ class InterfaceInfoService {
 		const sql = `insert into ${this.tableName}(id,name,type,url,param,dataType,callbackParam,userId,createTime) values(0,?,?,?,?,?,?,?,?)`
 		const param = modelUtil.modelToArray(model, 'name,type,url,param,dataType,callbackParam,userId,createTime')
 		sqlConnect.connect(sql, param, (res) => {
-			callback({id: res.OkPacket.insertId})
+			callback({id: res.insertId})
 		}, errorCallback)
 	}
 	update(model, callback, errorCallback) {
