@@ -128,6 +128,7 @@ class InterfaceInfo {
 		const interfaceInfoService = new InterfaceInfoService()
 		const interfaceInfoModel = new InterfaceInfoModel()
 		interfaceInfoModel.setId(param.interfaceId)
+		interfaceInfoModel.setUserId(param.userId)
 
 		interfaceInfoService.delete(interfaceInfoModel, (res) => {
 			callback(resultUtil.success(res, '删除成功'))
@@ -158,9 +159,10 @@ class InterfaceInfo {
 		const interfaceInfoService = new InterfaceInfoService()
 		const interfaceInfoModel = new InterfaceInfoModel()
 		interfaceInfoModel.setId(param.interfaceId)
+		interfaceInfoModel.setUserId(param.userId)
 
 		interfaceInfoService.select(interfaceInfoModel, (res) => {
-			if (res && res.userId === parseInt(param.userId)) {
+			if (res) {
 				callback(resultUtil.success({
 					interfaceId: res.id,
 					name: res.name,

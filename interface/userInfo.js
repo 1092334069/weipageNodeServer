@@ -10,7 +10,7 @@ class UserInfo {
 	*		userId 	用户id
 	*	}
 	*/
-	getUserDetail(param, callback) {
+	detail(param, callback) {
 		if (!param) {
 			callback(resultUtil.missParam('缺少参数'))
 			return

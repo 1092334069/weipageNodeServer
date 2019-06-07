@@ -18,8 +18,8 @@ class InterfaceInfoService {
 		}, errorCallback)
 	}
 	update(model, callback, errorCallback) {
-		const sql = `update ${this.tableName} set name = ?,type = ?,url = ?,param = ?,dataType = ?,callbackParam = ? where id = ?`
-		const param = modelUtil.modelToArray(model, 'name,type,url,param,dataType,callbackParam,id')
+		const sql = `update ${this.tableName} set name = ?,type = ?,url = ?,param = ?,dataType = ?,callbackParam = ? where (id = ? and userId = ?)`
+		const param = modelUtil.modelToArray(model, 'name,type,url,param,dataType,callbackParam,id,userId')
 		sqlConnect.connect(sql, param, (res) => {
 			if (res && res.affectedRows) {
 				callback()
@@ -29,8 +29,8 @@ class InterfaceInfoService {
 		}, errorCallback)
 	}
 	delete(model, callback, errorCallback) {
-		const sql = `delete from ${this.tableName} where id = ?`
-		const param = modelUtil.modelToArray(model, 'id')
+		const sql = `delete from ${this.tableName} where (id = ? and userId = ?)`
+		const param = modelUtil.modelToArray(model, 'id,userId')
 		sqlConnect.connect(sql, param, (res) => {
 			if (res && res.affectedRows) {
 				callback()
@@ -40,8 +40,8 @@ class InterfaceInfoService {
 		}, errorCallback)
 	}
 	select(model, callback, errorCallback) {
-		const sql = `select * from ${this.tableName} where id = ?`
-		const param = modelUtil.modelToArray(model, 'id')
+		const sql = `select * from ${this.tableName} where (id = ? and userId = ?)`
+		const param = modelUtil.modelToArray(model, 'id,userId')
 		sqlConnect.connect(sql, param, (res) => {
 			serviceUtil.selectOneCallback(res, callback)
 		}, errorCallback)
