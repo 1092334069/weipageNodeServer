@@ -2,10 +2,10 @@ class InterfaceInfoModel {
 	constructor() {
 		this id = 0
 		this.name = ''
-		this.type = 0
+		this.type = ''
 		this.url = ''
 		this.param = ''
-		this.dataType = 0,
+		this.dataType = '',
 		this.callbackParam = ''
 		this.userId = 0
 		this.createTime = new Date()
@@ -26,7 +26,7 @@ class InterfaceInfoModel {
 		return this.type
 	}
 	setType(type) {
-		this.type = parseInt(type)
+		this.type = type
 	}
 	getUrl() {
 		return this.url
