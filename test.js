@@ -7,7 +7,7 @@ const imageInfo = new ImageInfo()
 // }, (res) => {
 // 	console.log(res)
 // })
-getPageList.getPageList({
+imageInfo.getPageList({
 	userId: 1,
 	page: 1,
 	size: 2
