@@ -9,23 +9,36 @@ class ImageInfoService {
 	insert(model, callback, errorCallback) {
 		const sql = `insert into ${this.tableName}(id,url,size,userId,createTime) values(0,?,?,?,?)`
 		const param = modelUtil.modelToArray(model, 'url,size,userId,createTime')
-		sqlConnect.connect(sql, param, callback, errorCallback)
-	}
-	update(model, callback, errorCallback) {
-		const sql = `update ${this.tableName} set url = ?,size = ?,userId = ? where id = ?`
-		const param = modelUtil.modelToArray(model, 'url,size,userId,id')
-		sqlConnect.connect(sql, param, callback, errorCallback)
+		sqlConnect.connect(sql, param, (res) => {
+			if (res && res.insertId) {
+				callback({id: res.insertId})
+			} else {
+				errorCallback()
+			}
+		}, errorCallback)
 	}
 	delete(model, callback, errorCallback) {
-		const sql = `delete from ${this.tableName} where id = ?`
-		const param = modelUtil.modelToArray(model, 'id')
+		const sql = `delete from ${this.tableName} where (id = ? and userId = ?)`
+		const param = modelUtil.modelToArray(model, 'id,userId')
 		sqlConnect.connect(sql, param, callback, errorCallback)
 	}
 	select(model, callback, errorCallback) {
-		const sql = `select * from ${this.tableName} where id = ?`
-		const param = modelUtil.modelToArray(model, 'id')
+		const sql = `select * from ${this.tableName} where (id = ? and userId = ?)`
+		const param = modelUtil.modelToArray(model, 'id,userId')
 		sqlConnect.connect(sql, param, (res) => {
 			serviceUtil.selectOneCallback(res, callback)
+		}, errorCallback)
+	}
+	selectPageList(parameter, callback, errorCallback) {
+		const limit = serviceUtil.parseLimit(parameter)
+		if (!limit || !parameter.model) {
+			errorCallback()
+			return
+		}
+		const sql = `select id,url,size,createTime from ${this.tableName} where userId = ? order by id desc ${limit}`
+		const param = modelUtil.modelToArray(parameter.model, 'userId')
+		sqlConnect.connect(sql, param, (res) => {
+			serviceUtil.selectListCallback(res, callback)
 		}, errorCallback)
 	}
 }

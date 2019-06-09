@@ -1,9 +1,10 @@
-const WeipageInfo = require('./interface/weipageInfo')
-const weipageInfo = new WeipageInfo()
+const ImageInfo = require('./interface/imageInfo')
+const imageInfo = new ImageInfo()
 
-weipageInfo.delete({
+imageInfo.insert({
 	userId: 1,
-	weipageId: 2
+	url: 'http://img.http://aisqueezepage.com/1.png',
+	size: 100
 }, (res) => {
 	console.log(res)
 })
