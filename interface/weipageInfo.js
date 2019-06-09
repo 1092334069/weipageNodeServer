@@ -1,5 +1,5 @@
 const WeipageInfoService = require('../service/weipageInfoService')
-const WeipageInfoModel = require('../service/weipageInfoModel')
+const WeipageInfoModel = require('../model/weipageInfoModel')
 
 const resultUtil = require('../libs/resultUtil')
 
