@@ -29,9 +29,11 @@ function interfaceAction(pathname, param, callback) {
 const loginRouter = require('./loginRouter')
 const userRouter = require('./userRouter')
 const interfaceRouter = require('./interfaceRouter')
+const weipageRouter = require('./weipageRouter')
 jionRouterList(loginRouter)
 jionRouterList(userRouter)
 jionRouterList(interfaceRouter)
+jionRouterList(weipageRouter)
 
 module.exports = {
 	interfaceAction
