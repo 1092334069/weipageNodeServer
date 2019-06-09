@@ -20,7 +20,13 @@ class ImageInfoService {
 	delete(model, callback, errorCallback) {
 		const sql = `delete from ${this.tableName} where (id = ? and userId = ?)`
 		const param = modelUtil.modelToArray(model, 'id,userId')
-		sqlConnect.connect(sql, param, callback, errorCallback)
+		sqlConnect.connect(sql, param, (res) => {
+			if (res && res.affectedRows) {
+				callback()
+			} else {
+				errorCallback()
+			}
+		}, errorCallback)
 	}
 	select(model, callback, errorCallback) {
 		const sql = `select * from ${this.tableName} where (id = ? and userId = ?)`

@@ -26,13 +26,15 @@ function interfaceAction(pathname, param, callback) {
 }
 
 // 注册路由表
+const imageRouter = require('./imageRouter')
+const interfaceRouter = require('./interfaceRouter')
 const loginRouter = require('./loginRouter')
 const userRouter = require('./userRouter')
-const interfaceRouter = require('./interfaceRouter')
 const weipageRouter = require('./weipageRouter')
+jionRouterList(imageRouter)
+jionRouterList(interfaceRouter)
 jionRouterList(loginRouter)
 jionRouterList(userRouter)
-jionRouterList(interfaceRouter)
 jionRouterList(weipageRouter)
 
 module.exports = {
