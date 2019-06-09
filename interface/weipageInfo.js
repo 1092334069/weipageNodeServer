@@ -8,7 +8,7 @@ class WeipageInfo {
 	*	新增微页面
 	*	param {
 	*		name 			微页面名称
-	*		describe		微页面描述
+	*		describes		微页面描述
 	*		cover			微页面封面
 	*		pageName 		页面英文名（导出页面的目录名称）
 	*		data			页面数据格式
@@ -43,7 +43,7 @@ class WeipageInfo {
 		const weipageInfoService = new WeipageInfoService()
 		const weipageInfoModel = new WeipageInfoModel()
 		weipageInfoModel.setName(param.name)
-		weipageInfoModel.setDescribe(param.describe || '')
+		weipageInfoModel.setDescribes(param.describes || '')
 		weipageInfoModel.setCover(param.cover)
 		weipageInfoModel.setPageName(param.pageName)
 		weipageInfoModel.setData(param.data)
@@ -102,7 +102,7 @@ class WeipageInfo {
 		const weipageInfoModel = new WeipageInfoModel()
 		weipageInfoModel.setId(param.weipageId)
 		weipageInfoModel.setName(param.name)
-		weipageInfoModel.setDescribe(param.describe || '')
+		weipageInfoModel.setDescribes(param.describes || '')
 		weipageInfoModel.setCover(param.cover)
 		weipageInfoModel.setPageName(param.pageName)
 		weipageInfoModel.setData(param.data)

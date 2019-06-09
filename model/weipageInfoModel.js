@@ -2,7 +2,7 @@ class WeipageInfoModel {
 	constructor() {
 		this.id = 0
 		this.name = ''
-		this.describe = ''
+		this.describes = ''
 		this.cover = ''
 		this.pageName = ''
 		this.data = ''
@@ -21,11 +21,11 @@ class WeipageInfoModel {
 	setName(name) {
 		this.name = name
 	}
-	getDescribe() {
-		return this.describe
+	getDescribes() {
+		return this.describes
 	}
-	setDescribe(describe) {
-		this.describe = describe
+	setDescribes(describes) {
+		this.describes = describes
 	}
 	getCover() {
 		return this.cover

@@ -7,8 +7,8 @@ class WeipageInfoService {
 		this.tableName = 'weipage_info'
 	}
 	insert(model, callback, errorCallback) {
-		const sql = `insert into ${this.tableName}(id,name,describe,cover,pageName,data,userId,createTime) values(0,?,?,?,?,?,?,?)`
-		const param = modelUtil.modelToArray(model, 'name,describe,cover,pageName,data,userId,createTime')
+		const sql = `insert into ${this.tableName}(id,name,describes,cover,pageName,data,userId,createTime) values(0,?,?,?,?,?,?,?)`
+		const param = modelUtil.modelToArray(model, 'name,describes,cover,pageName,data,userId,createTime')
 		sqlConnect.connect(sql, param, (res) => {
 			if (res && res.insertId) {
 				callback({id: res.insertId})
@@ -18,8 +18,8 @@ class WeipageInfoService {
 		}, errorCallback)
 	}
 	update(model, callback, errorCallback) {
-		const sql = `update ${this.tableName} set name = ?,describe = ?,cover = ?,pageName = ?,data = ? where (id = ? and userId = ?)`
-		const param = modelUtil.modelToArray(model, 'name,describe,cover,pageName,data,id,userId')
+		const sql = `update ${this.tableName} set name = ?,describes = ?,cover = ?,pageName = ?,data = ? where (id = ? and userId = ?)`
+		const param = modelUtil.modelToArray(model, 'name,describes,cover,pageName,data,id,userId')
 		sqlConnect.connect(sql, param, (res) => {
 			if (res && res.affectedRows) {
 				callback()

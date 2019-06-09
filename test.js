@@ -3,10 +3,10 @@ const weipageInfo = new WeipageInfo()
 
 weipageInfo.insert({
 	userId: 1,
-	name: '第一个微页面',
-	describe: '',
-	cover: 'http://img.aisqueezepage.com.com/1.png',
-	pageName: 'lottery',
+	name: '第二个微页面',
+	describes: '描述',
+	cover: 'http://img.aisqueezepage.com.com/2.png',
+	pageName: 'activity',
 	data: '{"pluginList":[],"requestList":[]}'
 }, (res) => {
 	console.log(res)
