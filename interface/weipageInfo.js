@@ -179,7 +179,7 @@ class WeipageInfo {
 					cover: res.cover,
 					pageName: res.pageName,
 					data: JSON.parse(res.data)
-				}))
+				}, '获取成功'))
 			} else {
 				callback(resultUtil.searchEmpty('未找到该微页面'))
 			}

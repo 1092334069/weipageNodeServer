@@ -171,7 +171,7 @@ class InterfaceInfo {
 					param: res.param,
 					dataType: res.dataType,
 					callbackParam: res.callbackParam
-				}))
+				}, '获取成功'))
 			} else {
 				callback(resultUtil.searchEmpty('未找到该接口'))
 			}

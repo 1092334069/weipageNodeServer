@@ -1,7 +1,7 @@
 const WeipageInfo = require('./interface/weipageInfo')
 const weipageInfo = new WeipageInfo()
 
-weipageInfo.detail({
+weipageInfo.delete({
 	userId: 1,
 	weipageId: 2
 }, (res) => {
