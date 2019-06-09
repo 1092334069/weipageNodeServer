@@ -175,10 +175,10 @@ class WeipageInfo {
 				callback(resultUtil.success({
 					weipageId: res.id,
 					name: res.name,
-					describe: res.describe,
+					describe: res.describes,
 					cover: res.cover,
 					pageName: res.pageName,
-					data: res.data
+					data: JSON.parse(res.data)
 				}))
 			} else {
 				callback(resultUtil.searchEmpty('未找到该微页面'))
