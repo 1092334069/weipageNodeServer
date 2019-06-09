@@ -1,10 +1,13 @@
-const InterfaceInfo = require('./interface/interfaceInfo')
-const interfaceInfo = new InterfaceInfo()
+const WeipageInfo = require('./interface/weipageInfo')
+const weipageInfo = new WeipageInfo()
 
-interfaceInfo.getPageList({
-	userId: 2,
-	page: 2,
-	size: 3
+weipageInfo.insert({
+	userId: 1,
+	name: '第一个微页面',
+	describe: '',
+	cover: 'http://img.aisqueezepage.com.com/1.png',
+	pageName: 'lottery',
+	data: '{"pluginList":[],"requestList":[]}'
 }, (res) => {
 	console.log(res)
 })
