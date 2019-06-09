@@ -216,7 +216,7 @@ class WeipageInfo {
 		const weipageInfoModel = new WeipageInfoModel()
 		weipageInfoModel.setUserId(param.userId)
 
-		weipageInfoService..selectPageList({
+		weipageInfoService.selectPageList({
 			model: weipageInfoModel,
 			page: param.page,
 			size: param.size
