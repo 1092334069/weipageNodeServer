@@ -13,16 +13,8 @@ const operationUtil = require('./operationUtil')
 *	}
 */
 function checkLogin(param, callback, errorCallback) {
-	if (!param) {
-		errorCallback(resultUtil.missParam('缺少参数'))
-		return
-	}
-	if (!param.userId) {
-		errorCallback(resultUtil.missParam('缺少userId'))
-		return
-	}
-	if (!param.token) {
-		errorCallback(resultUtil.missParam('缺少token'))
+	if (!param || !param.userId || !param.token) {
+		errorCallback(resultUtil.unLogin('未登录'))
 		return
 	}
 
