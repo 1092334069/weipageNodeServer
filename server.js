@@ -19,7 +19,7 @@ function requestAction(req, res) {
 	const pathname = httpUtil.parsePathName(req)
 	const param = httpUtil.parseParam(req)
 	interfaceRouter.interfaceAction(pathname, param, (ret) => {
-		res.json(ret)
+		res.json((JSON.stringify(ret))
 	})
 }
 
