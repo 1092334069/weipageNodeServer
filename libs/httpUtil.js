@@ -1,3 +1,5 @@
+const aesUtil = require('./aesUtil')
+
 function parsePathName(req) {
 	if (req && req._parsedUrl) {
 		return req._parsedUrl.pathname
@@ -7,7 +9,12 @@ function parsePathName(req) {
 }
 
 function parseParam(req) {
-	if (req) {
+	if (req && req.query) {
+		if (req.query.userIdStr) {
+			req.query['userId'] = parseInt(aesUtil.decrypt(req.query.userIdStr))
+		} else {
+			req.query['userId'] = 0
+		}
 		return req.query
 	} else {
 		return {}

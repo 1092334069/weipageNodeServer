@@ -10,6 +10,7 @@ const UserInfoModel = require('../model/userInfoModel')
 const resultUtil = require('../libs/resultUtil')
 const operationUtil = require('../libs/operationUtil')
 const userUtil = require('../libs/userUtil')
+const aesUtil = require('../libs/aesUtil')
 
 /*
 *	用户注册
@@ -141,7 +142,7 @@ function getLoginToken(param, callback, errorCallback) {
 		loginInfoService.selectByPhone(loginInfoModel, (res) => {
 			if (res) {
 				callback(resultUtil.success({
-					userId: res.userId,
+					userIdStr: aesUtil.encrypt(res.userId.toString()),
 					token: res.token
 				}, '登录成功'))
 			} else {

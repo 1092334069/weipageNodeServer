@@ -2,6 +2,7 @@ const UserInfoService = require('../service/userInfoService')
 const UserInfoModel = require('../model/userInfoModel')
 
 const resultUtil = require('../libs/resultUtil')
+const aesUtil = require('../libs/aesUtil')
 
 class UserInfo {
 	/*
@@ -26,7 +27,13 @@ class UserInfo {
 
 		userInfoService.select(userInfoModel, (res) => {
 			if (res) {
-				callback(resultUtil.success(res))
+				callback(resultUtil.success({
+					userIdStr: aesUtil.encrypt(res.userId.toString()),
+					name: res.name,
+					grade: res.grade,
+					isVip: res.isVip,
+					remark: res.remark
+				}))
 			} else {
 				callback(resultUtil.searchEmpty('未找到该用户'))
 			}
