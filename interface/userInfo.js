@@ -28,7 +28,7 @@ class UserInfo {
 		userInfoService.select(userInfoModel, (res) => {
 			if (res) {
 				callback(resultUtil.success({
-					userIdStr: aesUtil.encrypt(res.userId.toString()),
+					userIdStr: aesUtil.encrypt(res.id.toString()),
 					name: res.name,
 					grade: res.grade,
 					isVip: res.isVip,
