@@ -29,11 +29,13 @@ function interfaceAction(pathname, param, callback) {
 const imageRouter = require('./imageRouter')
 const interfaceRouter = require('./interfaceRouter')
 const loginRouter = require('./loginRouter')
+const phoneRouter = require('./phoneRouter')
 const userRouter = require('./userRouter')
 const weipageRouter = require('./weipageRouter')
 jionRouterList(imageRouter)
 jionRouterList(interfaceRouter)
 jionRouterList(loginRouter)
+jionRouterList(phoneRouter)
 jionRouterList(userRouter)
 jionRouterList(weipageRouter)
 

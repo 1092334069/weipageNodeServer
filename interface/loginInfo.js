@@ -156,42 +156,6 @@ function getLoginToken(param, callback, errorCallback) {
 
 class LoginInfo {
 	/*
-	*	发送手机验证码
-	*	param {
-	*		phone 	手机号码
-	*	}
-	*/
-	sendPhoneCode(param, callback) {
-		if (!param || !param.phone) {
-			callback(resultUtil.missParam('缺少手机号码'))
-			return
-		}
-
-		const phoneCodeService = new PhoneCodeService()
-		const phoneCodeModel = new PhoneCodeModel()
-		phoneCodeModel.setPhone(param.phone)
-		phoneCodeModel.setUpdateTime(new Date())
-		phoneCodeModel.setCode(operationUtil.getPhoneCode())
-
-		phoneCodeService.select(phoneCodeModel, (res) => {
-			if (res) {
-				phoneCodeService.update(phoneCodeModel, () => {
-					callback(resultUtil.success({}, '获取验证码成功'))
-				}, () => {
-					callback(resultUtil.sqlException())
-				})
-			} else {
-				phoneCodeService.insert(phoneCodeModel, () => {
-					callback(resultUtil.success({}, '获取验证码成功'))
-				}, () => {
-					callback(resultUtil.sqlException())
-				})
-			}
-		}, () => {
-			callback(resultUtil.sqlException())
-		})
-	}
-	/*
 	*	手机号码验证码登陆
 	*	param {
 	*		phone 	手机号码

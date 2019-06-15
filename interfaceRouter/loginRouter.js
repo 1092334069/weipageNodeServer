@@ -8,9 +8,6 @@ const router = [{
 },{
 	pathname: '/api/login/phonePassword',
 	action: loginInfo.phonePasswordLogin
-},{
-	pathname: '/api/login/sendPhoneCode',
-	action: loginInfo.sendPhoneCode
 }]
 
 module.exports = router
