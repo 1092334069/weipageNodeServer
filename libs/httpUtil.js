@@ -9,16 +9,20 @@ function parsePathName(req) {
 }
 
 function parseParam(req) {
-	if (req && req.query) {
-		if (req.query.userIdStr) {
-			req.query['userId'] = parseInt(aesUtil.decrypt(req.query.userIdStr))
+	let param = {}
+	if (req) {
+		if (req.method === 'POST') {
+			param = req.body
 		} else {
-			req.query['userId'] = 0
+			param = req.query
 		}
-		return req.query
-	} else {
-		return {}
+		if (param.userIdStr) {
+			param['userId'] = parseInt(aesUtil.decrypt(param.userIdStr))
+		} else {
+			param['userId'] = 0
+		}
 	}
+	return param
 }
 
 module.exports = {
