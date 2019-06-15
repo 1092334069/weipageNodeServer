@@ -17,8 +17,9 @@ var server = app.listen(9090, function () {
 
 function requestAction(req, res) {
 	const pathname = httpUtil.parsePathName(req)
+	res.json(JSON.parse(JSON.stringify({pathname: pathname})))
 	const param = httpUtil.parseParam(req)
-	res.json(JSON.parse(JSON.stringify({param: param})))
+
 	interfaceRouter.interfaceAction(pathname, param, (ret) => {
 		res.json(JSON.parse(JSON.stringify(ret)))
 	})
