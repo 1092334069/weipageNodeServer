@@ -215,12 +215,12 @@ class InterfaceInfo {
 			interfaceInfoService.selectCount(interfaceInfoModel, (r) => {
 				callback(resultUtil.success({
 					list: res.list,
-					count: r
+					total: r
 				}, '获取成功'))
 			}, () => {
 				callback(resultUtil.success({
 					list: res.list,
-					count: 0
+					total: 0
 				}, '获取成功'))
 			})
 		}, () => {
