@@ -212,7 +212,17 @@ class InterfaceInfo {
 			page: param.page,
 			size: param.size
 		}, (res) => {
-			callback(resultUtil.success(res, '获取成功'))
+			interfaceInfoService.selectCount(interfaceInfoModel, (r) => {
+				callback(resultUtil.success({
+					list: res.list,
+					count: r
+				}, '获取成功'))
+			}, () => {
+				callback(resultUtil.success({
+					list: res.list,
+					count: 0
+				}, '获取成功'))
+			})
 		}, () => {
 			callback(resultUtil.sqlException())
 		})

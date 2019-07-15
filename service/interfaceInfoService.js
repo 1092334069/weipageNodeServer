@@ -58,6 +58,13 @@ class InterfaceInfoService {
 			serviceUtil.selectListCallback(res, callback)
 		}, errorCallback)
 	}
+	selectCount(model, callback, errorCallback) {
+		const sql = `select count(id) from ${this.tableName} where userId = ?`
+		const param = modelUtil.modelToArray(model, 'userId')
+		sqlConnect.connect(sql, param, (res) => {
+			serviceUtil.selectListCallback(res, callback)
+		}, errorCallback)
+	}
 }
 
 module.exports = InterfaceInfoService
