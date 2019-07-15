@@ -157,7 +157,6 @@ class ImageInfo {
 					total: 0
 				}, '获取成功'))
 			})
-			callback(resultUtil.success(res, '获取成功'))
 		}, () => {
 			callback(resultUtil.sqlException())
 		})
