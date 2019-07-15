@@ -62,7 +62,7 @@ class InterfaceInfoService {
 		const sql = `select count(id) from ${this.tableName} where userId = ?`
 		const param = modelUtil.modelToArray(model, 'userId')
 		sqlConnect.connect(sql, param, (res) => {
-			serviceUtil.selectOneCallback(res, callback)
+			serviceUtil.selectCountCallback(res, 'count(id)', callback)
 		}, errorCallback)
 	}
 }

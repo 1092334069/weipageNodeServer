@@ -1,3 +1,19 @@
+function selectCountCallback(res, key, callback) {
+	if (res) {
+		if (Array.isArray(res)) {
+			if (res.length) {
+				callback(res[0][key])
+			} else {
+				callback(0)
+			}
+		} else if (typeof res === 'object') {
+			callback(res[key])
+		}
+	} else {
+		callback(0)
+	}
+}
+
 function selectOneCallback(res, callback) {
 	if (res) {
 		if (Array.isArray(res)) {
@@ -46,6 +62,7 @@ function parseLimit(param) {
 }
 
 module.exports = {
+	selectCountCallback,
 	selectOneCallback,
 	selectListCallback,
 	parseLimit
