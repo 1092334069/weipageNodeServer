@@ -221,7 +221,17 @@ class WeipageInfo {
 			page: param.page,
 			size: param.size
 		}, (res) => {
-			callback(resultUtil.success(res, '获取成功'))
+			weipageInfoService.selectCount(weipageInfoModel, (r) => {
+				callback(resultUtil.success({
+					list: res.list,
+					total: r
+				}, '获取成功'))
+			}, () => {
+				callback(resultUtil.success({
+					list: res.list,
+					total: 0
+				}, '获取成功'))
+			})
 		}, () => {
 			callback(resultUtil.sqlException())
 		})
