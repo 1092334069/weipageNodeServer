@@ -9,7 +9,8 @@ const interfaceRouter = require('./interfaceRouter/index')
 
 const app = express()
 
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json({limit: '5mb'}))
+app.use(bodyParser.urlencoded({limit: '5mb', extended: true}))
 
 var server = app.listen(9090, function () {
 	console.log('listen 9090')
